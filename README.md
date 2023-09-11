@@ -57,8 +57,3 @@ https://user-images.githubusercontent.com/102649017/209686073-19a423b9-f62b-426a
 - Романов Егор - дизайнер.
 
 ---
-
-## Связь с лидером:
-<p align="center">
-<img src="https://user-images.githubusercontent.com/102649017/205361291-1fc23469-ee61-4b76-9246-cc2dca617eed.png">
-</p>
