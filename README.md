@@ -54,8 +54,8 @@ https://user-images.githubusercontent.com/102649017/209686073-19a423b9-f62b-426a
 6) Слева найти и открыть файл (.env)
 7) Зайти в BotFather в телеграмме ('https://t.me/BotFather'):
   1) Написать в строку ввода сообщения команду /newbot
-  2) Ввести название нового бота (Например: TetrisBot)
-  3) Ввести имя пользователя бота (Например: TetrisBot_bot)
+  2) Ввести название нового бота (##Например: TetrisBot)
+  3) Ввести имя пользователя бота (##Например: TetrisBot_bot)
   4) Скопируйти токен (Например: 4336414015:AAHch-SlC4xxxxxxxxxxxxxxbyLAEypHwE)
   5) Вставить ваш токен в файл (.env) в переменную TOKEN
 7) Зайти и запустить Show Json Bot в телеграмме (https://t.me/ShowJsonBot):
