@@ -48,7 +48,7 @@ https://user-images.githubusercontent.com/102649017/209686073-19a423b9-f62b-426a
 ## Инструкция установки: 
 <h2>1) Скачать <a href="https://www.python.org/downloads/">Python</a></h2>
 <h2>2) Скачать <a href="https://www.jetbrains.com/ru-ru/pycharm/download/?section=windows">PyCharm Community Editionhttps</a></h2>
-<h2>3) Скачать архив из GitHub</h2>
+<h2>3) Скачать архив из <a href="C:\Users\Пользователь\Desktop\Pocket-access-main.zip">GitHub</a></h2>
 <h2>4) Разархивировать арфих на рабочий стол</h2>
 <h2>5) Открыть новую папку через(в) PyCharm</h2>
 <h2>6) Слева найти и открыть файл (.env)</h2>
