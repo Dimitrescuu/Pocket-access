@@ -48,11 +48,11 @@ https://user-images.githubusercontent.com/102649017/209686073-19a423b9-f62b-426a
 ## Инструкция установки: 
 <h2>1) Скачать <a href="https://www.python.org/downloads/">Python</a></h2>
 <h2>2) Скачать <a href="https://www.jetbrains.com/ru-ru/pycharm/download/?section=windows">PyCharm Community Editionhttps</a></h2>
-<h2>3) Скачать архив из <a href="C:\Users\Пользователь\Desktop\Pocket-access-main.zip">GitHub</a></h2>
+<h2>3) Скачать архив из <a href="C:\Users\Пользователь\Desktop\Pocket-access-main.zip" download>GitHub</a></h2>
 <h2>4) Разархивировать арфих на рабочий стол</h2>
 <h2>5) Открыть новую папку через(в) PyCharm</h2>
 <h2>6) Слева найти и открыть файл (.env)</h2>
-<h2>7) Зайти и запустить <a href="https://t.me/BotFather">BotFather</a></h2>
+<h2>7) Зайти и запустить <a href="https://t.me/BotFather">BotFather</a>
   <ul>
         <li>7.1) Написать в строку ввода сообщения команду /newbot</li>
         <li>7.2) Ввести название нового бота (Например: TetrisBot)</li>
@@ -60,12 +60,14 @@ https://user-images.githubusercontent.com/102649017/209686073-19a423b9-f62b-426a
         <li>7.4) Скопируйти токен (Например: 4336414015:AAHch-SlC4xxxxxxxxxxxxxxbyLAEypHwE)</li>
         <li>7.5) Вставить ваш токен в файл (.env) в переменную TOKEN</li>
   </ul>
-<h2>13) Зайти и запустить <a href="https://t.me/ShowJsonBot">Show Json Bot</a></h2>
+</h2>
+<h2>13) Зайти и запустить <a href="https://t.me/ShowJsonBot">Show Json Bot</a>
   <ul>
         <li>14) Напишите в строку ввода сообщения команду: sw</li>
         <li>15) Найти строку с id и скопировать 9-и значное число (Пример строки: "id": 678987654,)</li>
         <li>16) Вставить ваш id в файл (.env) в переменную CHATID</li>
   </ul>
+</h2>
 <h2>17) Открыть PyCharm и в левом нижнем углу найти иконку с названием Terminal</h2>
 <h2>18) В открывшееся окно ввести поочередно следующие команды:</h2>
   <ul>
@@ -73,6 +75,7 @@ https://user-images.githubusercontent.com/102649017/209686073-19a423b9-f62b-426a
         <li>pip install pyTelegramBotAPI</li>
         <li>pip install Pillow</li>
   </ul>
+</h2>
 
 ---
 ## Участники проекта:
