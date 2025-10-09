@@ -1,0 +1,7 @@
+pyTelegramBotAPI
+mysql-connector-python
+python-dotenv
+psutil
+pillow
+requests
+flask

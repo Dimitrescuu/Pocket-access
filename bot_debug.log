@@ -1,0 +1,35 @@
+2025-07-04 16:22:05,177 - __main__ - INFO - Инициализация подключения к базе данных...
+2025-07-04 16:22:07,259 - __main__ - INFO - Успешное подключение к базе данных
+2025-07-04 16:22:07,263 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.telegram.org:443
+2025-07-04 16:22:07,533 - urllib3.connectionpool - DEBUG - https://api.telegram.org:443 "GET /bot8117762829:AAHExaJdneOaek3jsD5tn8ufpmhxgIgJ3nw/getMe HTTP/1.1" 200 262
+2025-07-04 16:22:07,534 - __main__ - INFO - Telegram API доступен
+2025-07-04 16:22:07,535 - __main__ - INFO - Экземпляр бота создан
+2025-07-04 16:22:07,536 - __main__ - INFO - Запуск основного потока...
+2025-07-04 16:22:07,536 - __main__ - INFO - Запуск polling бота...
+2025-07-04 16:22:07,536 - __main__ - INFO - Поток polling запущен
+2025-07-04 16:22:07,536 - __main__ - DEBUG - Начало infinity_polling...
+2025-07-04 16:22:07,536 - __main__ - DEBUG - Основной поток активен
+2025-07-04 16:22:07,537 - __main__ - ERROR - Ошибка в polling: Please install watchdog and psutil before using restart_on_change option.
+Traceback (most recent call last):
+  File "C:\Users\strut\AppData\Local\Programs\Python\Python313\Lib\site-packages\telebot\__init__.py", line 1037, in _setup_change_detector
+    from watchdog.observers import Observer
+ModuleNotFoundError: No module named 'watchdog'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\strut\Desktop\Pocket-access-main\Bot.py", line 329, in bot_polling
+    bot.infinity_polling(timeout=30, long_polling_timeout=20, restart_on_change=True)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\strut\AppData\Local\Programs\Python\Python313\Lib\site-packages\telebot\__init__.py", line 1106, in infinity_polling
+    self._setup_change_detector(path_to_watch)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\strut\AppData\Local\Programs\Python\Python313\Lib\site-packages\telebot\__init__.py", line 1040, in _setup_change_detector
+    raise ImportError(
+        'Please install watchdog and psutil before using restart_on_change option.'
+    )
+ImportError: Please install watchdog and psutil before using restart_on_change option.
+2025-07-04 16:22:07,541 - __main__ - INFO - Перезапуск бота через 15 секунд...
+2025-07-04 16:22:19,436 - __main__ - INFO - Бот остановлен пользователем
+2025-07-04 16:22:19,436 - __main__ - INFO - Завершение работы бота
+2025-07-04 16:22:19,436 - __main__ - INFO - Работа бота завершена
