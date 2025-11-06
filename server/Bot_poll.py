@@ -326,14 +326,18 @@ def poll_results():
         time.sleep(3)
 
 # ---------- ЗАПУСК ----------
-def run_flask(): app.run(host="0.0.0.0", port=API_PORT)
-def run_bot(): bot.infinity_polling()
+def run_flask():
+    app.run(host="0.0.0.0", port=API_PORT)
+
+def run_bot():
+    bot.infinity_polling()
 
 if __name__ == "__main__":
     init_db()
     threading.Thread(target=run_flask, daemon=True).start()
     threading.Thread(target=poll_results, daemon=True).start()
-    print("✅ Server started on port", API_PORT)
-    print("✅ Demo server started on port 5000")
-    app.run(host="0.0.0.0", port=5000)
-    run_bot()
+    threading.Thread(target=run_bot, daemon=True).start()
+    print(f"✅ Flask server started on port {API_PORT}")
+    print("✅ Telegram bot polling started")
+    while True:
+        time.sleep(3600)
