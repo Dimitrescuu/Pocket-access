@@ -49,7 +49,25 @@ def init_db():
 
 # ---------------- FLASK API ----------------
 app = Flask(__name__)
+devices = {}
 
+@app.route("/ping", methods=["GET"])
+def ping():
+    return jsonify({"status": "ok"})
+
+@app.route("/register", methods=["POST"])
+def register():
+    data = request.json or {}
+    dev_id = data.get("device_id")
+    if not dev_id:
+        return jsonify({"success": False, "error": "no device_id"}), 400
+    devices[dev_id] = {"last_seen": "now"}
+    return jsonify({"success": True})
+
+@app.route("/devices", methods=["GET"])
+def get_devices():
+    return jsonify({"count": len(devices), "devices": list(devices.keys())})
+    
 @app.route("/poll", methods=["POST"])
 def poll():
     """Agent polls with its computer_hash"""
@@ -316,4 +334,6 @@ if __name__ == "__main__":
     threading.Thread(target=run_flask, daemon=True).start()
     threading.Thread(target=poll_results, daemon=True).start()
     print("✅ Server started on port", API_PORT)
+    print("✅ Demo server started on port 5000")
+    app.run(host="0.0.0.0", port=5000)
     run_bot()
